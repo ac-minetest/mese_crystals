@@ -74,6 +74,7 @@ minetest.register_tool("mese_crystals:crystaline_bell", {
 			return
 		end
 		local pos = pointed_thing.under
+		if minetest.is_protected(pos, user:get_player_name()) then return end -- dont allow harvest if position protected
 		local node = minetest.get_node(pos)
 		local growth_stage = 0
 		if node.name == "mese_crystals:mese_crystal_ore4" then
